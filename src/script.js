@@ -1,23 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector("form");
+  const loginForm = document.getElementById("login-form");
+  const forgotForm = document.getElementById("forgot-form");
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
+  // Lógica para a página de login
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-    const email = form.email.value.trim();
-    const password = form.password.value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const email = loginForm.email.value.trim();
+      const password = loginForm.password.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailRegex.test(email)) {
-      alert("Por favor, insira um e-mail válido.");
-      return;
-    }
+      if (!emailRegex.test(email)) {
+        alert("Por favor, insira um e-mail válido.");
+        return;
+      }
 
-    if (!password) {
-      alert("Preencha todos os campos.");
-      return;
-    }
+      if (!password) {
+        alert("Preencha todos os campos.");
+        return;
+      }
 
-    alert("Login válido!");
-  });
+      alert("Login válido!");
+    });
+  }
+
+  // Lógica para a página de "Esqueci minha senha"
+  if (forgotForm) {
+    forgotForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const email = forgotForm.email.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        alert("Por favor, insira um e-mail válido.");
+        return;
+      }
+
+      alert("E-mail enviado com sucesso!");
+    });
+  }
 });
